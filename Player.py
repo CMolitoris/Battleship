@@ -16,7 +16,9 @@ class Player:
         #Needs to account for ship size
         location = input("Where would you like to place your " + ship.type + "? ")    
         location_split = list(location)
-        letter_index = self.grid.ascii_upper.index(location_split[0])
-        num_index = int(location_split[1]) - 1
-        self.grid.matrix[letter_index][num_index] = 1
+        num_index = self.grid.ascii_upper.index(location_split[0])
+        letter_index = int(location_split[1]) - 1
+        while num_index<=ship.size:
+            self.grid.matrix[num_index][letter_index] = 1
+            num_index += 1
         self.grid.display_grid()
