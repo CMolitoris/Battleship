@@ -6,8 +6,8 @@ class Grid:
         self.ascii_upper = self.populate_letters()
 
     def initialize_grid(self):
-        rows, cols =  (20,20)  
-        return [[0]*cols]*rows
+        rows, cols =  20,20  
+        return [[0 for x in range(rows)] for y in range(cols)]
 
     def display_grid(self):
         count = 0
@@ -29,6 +29,10 @@ class Grid:
                 if count==19:
                     count=0
                     print()
+                elif n==1:
+                    color_int = '\33[31m' + "1" + '\33[0m'
+                    print(color_int,end="  ")
+                    count += 1 
                 else:  
                     print(n,end="  ")
                     count += 1 
