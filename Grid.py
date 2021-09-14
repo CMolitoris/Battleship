@@ -11,13 +11,20 @@ class Grid:
 
     def display_grid(self):
         count = 0
-        print()
-        # for n in range(19):
-        #     print(self.ascii_upper[n],end="  ")
-        # print()   
+        count_left_index = 1
+        print()  
         self.print_top_index()
 
         for m in self.matrix:
+            if count_left_index<10:
+                count_color = ""
+                count_color += '\33[34m' + str(count_left_index) + '\33[0m' 
+                print(count_color,end="   ")
+            else:  
+                count_color = ""
+                count_color += '\33[34m' + str(count_left_index) + '\33[0m'  
+                print(count_color,end="  ")
+
             for n in m:
                 if count==19:
                     count=0
@@ -25,6 +32,7 @@ class Grid:
                 else:  
                     print(n,end="  ")
                     count += 1 
+            count_left_index += 1            
         print()             
             
     def populate_letters(self):
@@ -34,7 +42,7 @@ class Grid:
         return letter_list   
 
     def print_top_index(self):
-        str_letters = ""
+        str_letters = "  "
         for i in range(19):
-            str_letters += self.ascii_upper[i] + "  "    
-        print('\33[35m' + str_letters + '\33[0m')    
+            str_letters += "  " + self.ascii_upper[i]     
+        print('\33[34m' + str_letters + '\33[0m')    
